@@ -24,10 +24,10 @@ namespace fastcdc {
 // is always identified as a chunk boundary.
 // - data like {1, 1, 1, ...} results in a continuously all-ones rolling hash,
 // thus is never identified as a chunk boundary.
-static const uint64_t testgear64[256]{0, 1};  // 0, 1, 0, 0, 0, ...
+static constexpr uint64_t test_kmult = 1;
 
-template <const uint64_t gear[256] = testgear64>
-using TestChunker = Chunker64<gear>;
+template <uint64_t kmult = test_kmult>
+using TestChunker = Chunker64<kmult>;
 
 class ChunkerTest : public ::testing::Test {
  public:
